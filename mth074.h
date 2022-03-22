@@ -45,7 +45,7 @@ namespace mth074
     } // namespace fibonacci
 
     /**
-     * @brief calculate greatest common divisor
+     * @brief calculate greatest common divisor - Euclide's Formula
      */
     template <typename T = bigint_t>
     T gcd(T a, T b)
@@ -65,6 +65,35 @@ namespace mth074
         }
 
         return a + b;
+    }
+
+    /**
+     * @brief test co-prime
+     */
+    template <typename T = bigint_t>
+    bool coprime(T const &a, T const &b)
+    {
+        return 1 == gcd<T>(a, b);
+    }
+
+    /**
+     * @brief quick power
+     */
+    template <typename T = bigint_t>
+    T power(T a, size_t n)
+    {
+        T p = 1;
+
+        while (n)
+        {
+            if (n % 2 == 1)
+                p *= a;
+
+            a *= a;
+            n /= 2;
+        }
+
+        return p;
     }
 
 } // namespace mth074
