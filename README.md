@@ -1,4 +1,4 @@
-# MTH074 Project - investigate C++ big integer library
+### MTH074 Project - investigate C++ big integer library
 
 ## [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)
 
