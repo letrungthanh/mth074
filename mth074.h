@@ -9,13 +9,11 @@ namespace mth074
 {
     using bigint_t = mpz_class;
 
-    namespace fibonacci
-    {
-        /**
-         * @brief calculate term-th fibonacci number
-         */
-        template <typename T = bigint_t>
-        T calc(size_t term)
+    /**
+     * @brief calculate term-th fibonacci number
+     */
+    template <typename T = bigint_t>
+        T calculateFibonacci(size_t term)
         {
             if (term == 0)
                 return 0;
@@ -32,17 +30,16 @@ namespace mth074
             return b;
         }
 
-        /**
-         * @brief calculate number of digits of term-th fibonacci number - Binet’s Formula
-         */
-        size_t calc_digits(size_t term)
-        {
-            if (term == 1)
-                return 1;
+    /**
+     * @brief calculate number of digits of term-th fibonacci number - Binet’s Formula
+     */
+    size_t calc_digits(size_t term)
+    {
+        if (term == 1)
+            return 1;
 
-            return std::ceil((term * std::log10(1.6180339887498948)) - ((std::log10(5)) / 2));
-        }
-    } // namespace fibonacci
+        return std::ceil((term * std::log10(1.6180339887498948)) - ((std::log10(5)) / 2));
+    }
 
     /**
      * @brief calculate greatest common divisor - Euclide's Formula
@@ -101,16 +98,22 @@ namespace mth074
     {
         std::cout << "\ntestOverflow\n";
         std::cout << "expected is 2^64\n";
-        uint64_t num1 {1u << 64}; // Overflow: result is 0
-        std::cout << "uint64_t: " << num1 << std::endl;
+        std::cout << "uint64_t: " << (1u << 64) << std::endl; // Overflow: result is 0
         bigint_t num2 {(bigint_t)1 << 64};
-        std::cout << "bigint lib: " << num2 << std::endl;
+        std::cout << "bigint lib: " << ((bigint_t)1 << 64) << std::endl;
+    }
+
+    void testFibonacci()
+    {
+        std::cout << "\ntestFibonacii\n";
+        std::cout << "expected is 280571172992510140037611932413038677189525\n";
+        std::cout << calculateFibonacci(200) << std::endl;
     }
 
     void testNumberCannotBePresentedByDouble()
     {
         std::cout << "\ntestNumberCannotBePresentedByDouble\n";
-        std::cout << "Number: 2^53 cannot displayed by double\n";
+        std::cout << "Number: 2^53 + 1 cannot displayed by double\n";
         std::cout << "2^53 + 1 = 9007199254740992 + 1\n";
         double num {pow(2, 53)};
         std::cout << "uint64_t: " << static_cast<uint64_t>(num)  + 1 << std::endl;

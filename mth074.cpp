@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
 {
     {
         mth074::testOverflow();
+        mth074::testFibonacci();
         mth074::testNumberCannotBePresentedByDouble();
     }
     { // basic arithmetic
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
     }
 
     { // calculate very big fibonacci number
-        std::cout << mth074::fibonacci::calc_digits(100'000) << std::endl;
+        //std::cout << mth074::fibonacci::calc_digits(200) << std::endl;
         //std::cout << mth074::fibonacci::calc(100'000) << std::endl;
     }
 
